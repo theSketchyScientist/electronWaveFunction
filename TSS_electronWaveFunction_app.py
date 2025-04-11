@@ -9,28 +9,55 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- Custom CSS
+# --- Custom CSS (Dark theme + Fade-in animation)
 st.markdown("""
 <style>
 body {
     background-color: #0e1117;
     color: #cccccc;
 }
-h1 {
-    text-align: center;
+
+/* Fade-in animation keyframes */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Container for logo and title */
+.title-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Logo image */
+.title-container img {
+    width: 100px;
+    margin-right: 20px;
+}
+
+/* Title text */
+.title-container h1 {
+    margin: 0;
     font-size: 2.5rem;
     color: #FFFFFF;
-    margin-bottom: 1rem;
 }
+
+/* Subheaders */
 h2 {
     color: #ffffff;
 }
+
+/* Captions below orbitals */
 .caption-text {
     margin-top: -130px;
     text-align: left;
     font-size: 0.95rem;
     color: #888888;
 }
+
+/* Footer at the bottom */
 .footer {
     margin-top: 50px;
     text-align: center;
@@ -49,17 +76,18 @@ def get_base64_of_bin_file(bin_file):
 # --- Load your logo
 logo_base64 = get_base64_of_bin_file('TSS_logo.jpeg')
 
-# --- App Title with Logo
+# --- App Title with Logo (Fade-in effect applied)
 st.markdown(f"""
-<div style='display: flex; justify-content: center; align-items: center;'>
-    <img src="data:image/jpeg;base64,{logo_base64}" alt="Logo" width="100" style="margin-right: 20px;">
-    <h1 style="margin: 0;">Hydrogen Atom Orbitals — Interactive 3D Visualizations</h1>
+<div class="title-container">
+    <img src="data:image/jpeg;base64,{logo_base64}" alt="Logo">
+    <h1>Hydrogen Atom Orbitals — Interactive 3D Visualizations</h1>
 </div>
 """, unsafe_allow_html=True)
 
 # --- App Intro Text
 st.markdown("""
-Explore 3D visualizations of hydrogen atom orbitals (1s, 2p, 3d) based on exact Schrödinger equation solutions. Rotate, zoom, and use dropdowns to switch between different views and orientations!
+Explore 3D visualizations of hydrogen atom orbitals (1s, 2p, 3d) based on exact Schrödinger equation solutions.  
+Rotate, zoom, and use dropdowns to switch between different views and orientations!
 """)
 
 # --- Function to load and display HTML
