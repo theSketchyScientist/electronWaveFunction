@@ -11,18 +11,13 @@ st.set_page_config(
 # --- Custom CSS for a sleeker look
 st.markdown("""
 <style>
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Background and text color */
+/* Change background color */
 body {
     background-color: #0e1117;
     color: #cccccc;
 }
 
-/* Title and header styling */
+/* Make title and headers prettier */
 h1 {
     text-align: center;
     font-size: 2.5rem;
@@ -36,7 +31,7 @@ h2 {
 
 /* Style the captions nicely */
 .caption-text {
-    margin-top: -60px;
+    margin-top: -130px;
     text-align: left;
     font-size: 0.95rem;
     color: #888888;
@@ -49,26 +44,8 @@ h2 {
     font-size: 0.85rem;
     color: #666666;
 }
-
-/* Circular logo image */
-.top-logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
 </style>
 """, unsafe_allow_html=True)
-
-# --- Display top circular logo
-st.markdown(
-    "<img src='TSS_logo.png' class='top-logo'>",
-    unsafe_allow_html=True
-)
 
 # --- App Title
 st.title("Hydrogen Atom Orbitals — Interactive 3D Visualizations")
@@ -84,7 +61,7 @@ def display_html(file_path, title, caption):
     st.subheader(title)
     with open(file_path, 'r', encoding='utf-8') as f:
         html_content = f.read()
-    components.html(html_content, height=600, width=None, scrolling=True)
+    components.html(html_content, height=600, width=800, scrolling=True)
     st.markdown(f"<div class='caption-text'>{caption}</div>", unsafe_allow_html=True)
 
 # --- Display Orbitals
