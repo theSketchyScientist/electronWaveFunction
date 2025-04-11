@@ -2,13 +2,57 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 # --- Set page config
-st.set_page_config(page_title="Hydrogen Atom Orbitals Viewer", layout="centered")
+st.set_page_config(
+    page_title="Hydrogen Atom Orbitals Viewer", 
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
+
+# --- Custom CSS for a sleeker look
+st.markdown("""
+<style>
+/* Change background color */
+body {
+    background-color: #0e1117;
+    color: #cccccc;
+}
+
+/* Make title and headers prettier */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    color: #ffffff;
+}
+
+/* Style the captions nicely */
+.caption-text {
+    margin-top: -130px;
+    text-align: left;
+    font-size: 0.95rem;
+    color: #888888;
+}
+
+/* Footer styling */
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666666;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # --- App Title
 st.title("Hydrogen Atom Orbitals — Interactive 3D Visualizations")
 
+# --- App Intro Text
 st.markdown("""
-Explore 3D visualizations of hydrogen atom orbitals (1s, 2p, 3d) based on exact Schrödinger equation solutions.
+Explore 3D visualizations of hydrogen atom orbitals (1s, 2p, 3d) based on exact Schrödinger equation solutions.  
 Rotate, zoom, and use dropdowns to switch between different views and orientations!
 """)
 
@@ -17,16 +61,10 @@ def display_html(file_path, title, caption):
     st.subheader(title)
     with open(file_path, 'r', encoding='utf-8') as f:
         html_content = f.read()
-    container = st.container()
-    with container:
-        components.html(html_content, height=600, width=800, scrolling=True)
-        st.markdown(
-            f"<div style='margin-top: -140px; text-align: left; font-size: 0.99rem; color: #999999;'>{caption}</div>", 
-            unsafe_allow_html=True
-        )
-    # st.markdown(divider_html, unsafe_allow_html=True)  # custom clean thin divider
+    components.html(html_content, height=600, width=800, scrolling=True)
+    st.markdown(f"<div class='caption-text'>{caption}</div>", unsafe_allow_html=True)
 
-# --- Stack the orbitals
+# --- Display Orbitals
 display_html(
     "hydrogen_1s_orbitals.html", 
     "📚 Hydrogen 1s Orbital — Building the 3D Electron Cloud",
@@ -44,3 +82,10 @@ display_html(
     "📚 Hydrogen 3d Orbitals — Angular Dependence and Complex Shapes",
     "📷 Rotate and explore the complex shapes of the hydrogen 3d orbitals! Each has unique nodal planes and cloverleaf structures."
 )
+
+# --- Footer
+st.markdown("""
+<div class='footer'>
+    Created by <strong>The Sketchy Scientist</strong> — All rights reserved.
+</div>
+""", unsafe_allow_html=True)
