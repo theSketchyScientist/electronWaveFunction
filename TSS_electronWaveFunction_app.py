@@ -46,8 +46,12 @@ def get_base64_of_bin_file(bin_file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-# --- Load your logo
-logo_base64 = get_base64_of_bin_file('TSS_logo.jpeg')
+st.markdown(f"""
+<div style='display: flex; justify-content: center; align-items: center;'>
+    <img src="data:image/jpeg;base64,{logo_base64}" alt="Logo" width="100" style="margin-right: 20px;">
+    <h1 style="margin: 0;">Hydrogen Atom Orbitals — Interactive 3D Visualizations</h1>
+</div>
+""", unsafe_allow_html=True)
 
 # --- App Title with Logo
 st.markdown(f"""
@@ -59,8 +63,7 @@ st.markdown(f"""
 
 # --- App Intro Text
 st.markdown("""
-Explore 3D visualizations of hydrogen atom orbitals (1s, 2p, 3d) based on exact Schrödinger equation solutions.  
-Rotate, zoom, and use dropdowns to switch between different views and orientations!
+Explore 3D visualizations of hydrogen atom orbitals (1s, 2p, 3d) based on exact Schrödinger equation solutions. Rotate, zoom, and use dropdowns to switch between different views and orientations!
 """)
 
 # --- Function to load and display HTML
