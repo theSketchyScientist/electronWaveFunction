@@ -16,17 +16,13 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Background and text colors */
+/* Background and text color */
 body {
     background-color: #0e1117;
     color: #cccccc;
 }
 
-/* Title and header styling with fade-in */
-h1, h2 {
-    animation: fadeIn 1.5s ease-in;
-}
-
+/* Title and header styling */
 h1 {
     text-align: center;
     font-size: 2.5rem;
@@ -38,27 +34,12 @@ h2 {
     color: #ffffff;
 }
 
-/* Style the logo image */
-.top-logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.2);
-    animation: fadeIn 2s ease-in;
-    margin-bottom: 10px;
-}
-
 /* Style the captions nicely */
 .caption-text {
     margin-top: -60px;
     text-align: left;
     font-size: 0.95rem;
     color: #888888;
-    animation: fadeIn 2s ease-in;
 }
 
 /* Footer styling */
@@ -67,20 +48,25 @@ h2 {
     text-align: center;
     font-size: 0.85rem;
     color: #666666;
-    animation: fadeIn 2s ease-in;
 }
 
-/* Fade-in keyframes */
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+/* Circular logo image */
+.top-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
 }
 </style>
 """, unsafe_allow_html=True)
 
 # --- Display top circular logo
 st.markdown(
-    "<img class='top-logo' src='TSS_logo.jpeg' alt='Logo'>",
+    "<img src='TSS_logo.png' class='top-logo'>",
     unsafe_allow_html=True
 )
 
