@@ -1,5 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
+import base64
 
 # --- Set page config
 st.set_page_config(
@@ -8,36 +9,28 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- Custom CSS for a sleeker look
+# --- Custom CSS
 st.markdown("""
 <style>
-/* Change background color */
 body {
     background-color: #0e1117;
     color: #cccccc;
 }
-
-/* Make title and headers prettier */
 h1 {
     text-align: center;
     font-size: 2.5rem;
     color: #FFFFFF;
     margin-bottom: 1rem;
 }
-
 h2 {
     color: #ffffff;
 }
-
-/* Style the captions nicely */
 .caption-text {
     margin-top: -130px;
     text-align: left;
     font-size: 0.95rem;
     color: #888888;
 }
-
-/* Footer styling */
 .footer {
     margin-top: 50px;
     text-align: center;
@@ -47,8 +40,22 @@ h2 {
 </style>
 """, unsafe_allow_html=True)
 
-# --- App Title
-st.title("Hydrogen Atom Orbitals — Interactive 3D Visualizations")
+# --- Helper function to encode image
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+# --- Load your logo
+logo_base64 = get_base64_of_bin_file('TSS_logo.jpeg')
+
+# --- App Title with Logo
+st.markdown(f"""
+<div style='display: flex; justify-content: center; align-items: center;'>
+    <img src="data:image/jpeg;base64,{logo_base64}" alt="Logo" width="60" style="margin-right: 20px;">
+    <h1 style="margin: 0;">Hydrogen Atom Orbitals — Interactive 3D Visualizations</h1>
+</div>
+""", unsafe_allow_html=True)
 
 # --- App Intro Text
 st.markdown("""
