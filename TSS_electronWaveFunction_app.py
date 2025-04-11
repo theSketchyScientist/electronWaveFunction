@@ -34,7 +34,10 @@ body {
 /* Logo image */
 .title-container img {
     width: 100px;
+    height: 100px;
     margin-right: 20px;
+    border-radius: 50%;  /* <<< This makes the logo round */
+    object-fit: cover;
 }
 
 /* Title text */
