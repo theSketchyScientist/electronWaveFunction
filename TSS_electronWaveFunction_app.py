@@ -59,8 +59,7 @@ st.markdown(f"""
 
 # --- App Intro Text
 st.markdown("""
-Explore 3D visualizations of hydrogen atom orbitals (1s, 2p, 3d) based on exact Schrödinger equation solutions.  
-Rotate, zoom, and use dropdowns to switch between different views and orientations!
+Explore 3D visualizations of hydrogen atom orbitals (1s, 2p, 3d) based on exact Schrödinger equation solutions. Rotate, zoom, and use dropdowns to switch between different views and orientations!
 """)
 
 # --- Function to load and display HTML
