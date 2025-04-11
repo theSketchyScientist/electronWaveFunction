@@ -80,7 +80,7 @@ h2 {
 
 # --- Display top circular logo
 st.markdown(
-    "<img class='top-logo' src='TSS_logo.png' alt='Logo'>",
+    "<img class='top-logo' src='TSS_logo.jpeg' alt='Logo'>",
     unsafe_allow_html=True
 )
 
