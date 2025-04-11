@@ -1,5 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
+import base64
 
 # --- Set page config
 st.set_page_config(
@@ -8,28 +9,47 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- Custom CSS for a sleeker look
+# --- Custom CSS (Dark theme + Fade-in animation)
 st.markdown("""
 <style>
-/* Change background color */
 body {
     background-color: #0e1117;
     color: #cccccc;
 }
 
-/* Make title and headers prettier */
-h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #FFFFFF;
-    margin-bottom: 1rem;
+/* Fade-in animation keyframes */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
+/* Container for logo and title */
+.title-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Logo image */
+.title-container img {
+    width: 100px;
+    margin-right: 20px;
+}
+
+/* Title text */
+.title-container h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #FFFFFF;
+}
+
+/* Subheaders */
 h2 {
     color: #ffffff;
 }
 
-/* Style the captions nicely */
+/* Captions below orbitals */
 .caption-text {
     margin-top: -130px;
     text-align: left;
@@ -37,7 +57,7 @@ h2 {
     color: #888888;
 }
 
-/* Footer styling */
+/* Footer at the bottom */
 .footer {
     margin-top: 50px;
     text-align: center;
@@ -47,8 +67,22 @@ h2 {
 </style>
 """, unsafe_allow_html=True)
 
-# --- App Title
-st.title("Hydrogen Atom Orbitals — Interactive 3D Visualizations")
+# --- Helper function to encode the logo image
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+# --- Load your logo
+logo_base64 = get_base64_of_bin_file('TSS_logo.jpeg')
+
+# --- App Title with Logo (Fade-in effect applied)
+st.markdown(f"""
+<div class="title-container">
+    <img src="data:image/jpeg;base64,{logo_base64}" alt="Logo">
+    <h1>Hydrogen Atom Orbitals — Interactive 3D Visualizations</h1>
+</div>
+""", unsafe_allow_html=True)
 
 # --- App Intro Text
 st.markdown("""
